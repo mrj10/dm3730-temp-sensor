@@ -1,0 +1,7 @@
+This is a userspace "driver" for the Texas Instruments OMAP3 DM3730's on-die temperature sensor under Linux.  The DM3730 is found on, for example, the Beagleboard-xM.
+The driver uses mmap and /dev/mem to memory-map the appropriate registers, and includes functions to initialize the temperature sensor, take a reading, and turn off the sensor.
+Taking a temperature reading is a two-step process, and the driver allows the user to either block and wait for the reading to complete or call back later to see if the reading has completed.
+The driver functions return a temperature in Celsius, based on the LUT given in the DM3730's Technical Reference Manual.
+For now the code is horrific, but it gets the job done.  This would be done better as a kernel-mode driver.
+
+Tested on a Beagleboard-xM Rev A2 and the Linux 2.6.32 kernel.
